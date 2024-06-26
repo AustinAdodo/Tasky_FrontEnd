@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .rich-text-box {
+      background-color: #f1f5f9;
+      border-radius: 0.25rem;
+      padding: 0.5rem;
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.25rem;
+      padding: 1rem;
+      margin: 0.5rem 0;
+    }
+
+    .dot-menu {
+      float: right;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 p-6">
+<div class="container mx-auto">
+  <div class="grid grid-cols-3 gap-4">
+    <div>
+      <div class="rich-text-box flex justify-between items-center">
+        <span>In Progress</span>
+        <span class="dot-menu">...</span>
+      </div>
+      <div id="in-progress-tasks"></div>
+    </div>
+    <div>
+      <div class="rich-text-box flex justify-between items-center">
+        <span>Completed Tasks</span>
+        <span class="dot-menu">...</span>
+      </div>
+      <div id="completed-tasks"></div>
+    </div>
+    <div>
+      <div class="rich-text-box flex justify-between items-center">
+        <span>Overdue</span>
+        <span class="dot-menu">...</span>
+      </div>
+      <div id="overdue-tasks"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+    // This would typically be an AJAX call to your backend to fetch the tasks
+    const tasks = [
+      { name: "User Flow", description: "Design the user flow for the application", status: "In Progress" },
+      { name: "Website Payment Integration", description: "Integrate payment gateway", status: "In Progress" },
+      { name: "Unit Testing", description: "Write unit tests for the new features", status: "Completed Tasks" },
+      { name: "Documentation", description: "Update project documentation", status: "Overdue" },
+    ];
+
+    tasks.forEach(task => {
+      const taskHtml = `
+                    <div class="card">
+                        <h3 class="font-bold">${task.name}</h3>
+                        <p>${task.description}</p>
+                    </div>
+                `;
+
+      if (task.status === "In Progress") {
+        $("#in-progress-tasks").append(taskHtml);
+      } else if (task.status === "Completed Tasks") {
+        $("#completed-tasks").append(taskHtml);
+      } else if (task.status === "Overdue") {
+        $("#overdue-tasks").append(taskHtml);
+      }
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+<!--<!doctype html>-->
+<!--<html class="no-js" lang="">-->
+
+<!--<head>-->
+<!--  <meta charset="utf-8">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--  <title></title>-->
+<!--  <link rel="stylesheet" href="css/style.css">-->
+<!--  <meta name="description" content="">-->
+
+<!--  <meta property="og:title" content="">-->
+<!--  <meta property="og:type" content="">-->
+<!--  <meta property="og:url" content="">-->
+<!--  <meta property="og:image" content="">-->
+<!--  <meta property="og:image:alt" content="">-->
+
+<!--  <link rel="icon" href="/favicon.ico" sizes="any">-->
+<!--  <link rel="icon" href="/icon.svg" type="image/svg+xml">-->
+<!--  <link rel="apple-touch-icon" href="icon.png">-->
+
+<!--  <link rel="manifest" href="site.webmanifest">-->
+<!--  <meta name="theme-color" content="#fafafa">-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--  &lt;!&ndash; Add your site or application content here &ndash;&gt;-->
+<!--  <p>Hello world! This is HTML5 Boilerplate.</p>-->
+<!--  <script src="js/app.js"></script>-->
+
+<!--</body>-->
+
+<!--</html>-->
